@@ -6,72 +6,81 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link href='https://fonts.googleapis.com/css?family=Buda:300' rel='stylesheet'>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
- <style>
-.container {
-  margin-bottom: 2vw;
-}
-img {
-  transition: transform 0.25s ease;
-  border-radius: 2px;
-  height: auto;
-  max-width: 100%;
-}
-img:hover {
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
-}
-footer {
-  text-align: center;
-  padding: 3px;
-  color: black;
-  background-color: transparent; /* Override Bootstrap default */
-}
-</style>
+  <style>
+    .container {
+      margin-bottom: 2vw;
+    }
+    img {
+      transition: transform 0.25s ease;
+      border-radius: 2px;
+      height: auto;
+      max-width: 100%;
+    }
+    img:hover {
+      transform: scale(1.2);
+    }
+    footer {
+      text-align: center;
+      padding: 3px;
+      color: black;
+      background-color: transparent; /* Override Bootstrap default */
+    }
+    .jumbotron h1 {
+      font-family: 'Buda', sans-serif;
+      font-size: 80px;
+      font-weight: bold;
+    }
+    .gallery-item {
+      margin-bottom: 20px; /* Added for better spacing */
+    }
+    .gallery-item p {
+      font-size: 22px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
 
 <div class="jumbotron text-center">
-  <h1 style="font-family: 'Buda'; font-size: 80px; font-weight: bold;">Photography Series</h1> <br>
+  <h1>Photography Series</h1>
   <p>Juan Herzberg</p>
 </div>
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-4">
-      <p class="text-center" style="font-size: 22px;">The Love Project</p>
-      <a href="love.html"><img src="intro/love.jpg"></a>
+    <div class="col-sm-4 gallery-item">
+      <p>The Love Project</p>
+      <a href="love.html"><img src="intro/love.jpg" alt="The Love Project"></a>
     </div>
-    <div class="col-sm-4">
-      <p class="text-center" style="font-size: 22px;">Meaningful Moments</p>
-      <a href="moments.html"><img src="intro/moments.jpg"></a>
+    <div class="col-sm-4 gallery-item">
+      <p>Meaningful Moments</p>
+      <a href="moments.html"><img src="intro/moments.jpg" alt="Meaningful Moments"></a>
     </div>
-    <div class="col-sm-4">
-      <p class="text-center" style="font-size: 22px;">Street Sights</p>
-      <a href="street.html"><img src="intro/streetart.jpg"></a>
+    <div class="col-sm-4 gallery-item">
+      <p>Street Sights</p>
+      <a href="street.html"><img src="intro/streetart.jpg" alt="Street Sights"></a>
     </div>
   </div>
   
   <div class="row">
-    <div class="col-sm-4">
-      <p class="text-center" style="font-size: 22px;">Nature and Landscapes</p>
-      <a href="land.html"><img src="intro/22.JPEG"></a>
+    <div class="col-sm-4 gallery-item">
+      <p>Nature and Landscapes</p>
+      <a href="land.html"><img src="intro/22.JPEG" alt="Nature and Landscapes"></a>
     </div>
-    <div class="col-sm-4">
-      <p class="text-center" style="font-size: 22px;">idk2</p>
-      <a href="love.html"><img src="intro/love.jpg"></a>
+    <div class="col-sm-4 gallery-item">
+      <p>idk2</p>
+      <a href="idk2.html"><img src="intro/idk2.jpg" alt="idk2"></a>
     </div>
-    <div class="col-sm-4">
-      <p class="text-center" style="font-size: 22px;">idk3</p>
-      <a href="love.html"><img src="intro/love.jpg"></a>
+    <div class="col-sm-4 gallery-item">
+      <p>idk3</p>
+      <a href="idk3.html"><img src="intro/idk3.jpg" alt="idk3"></a>
     </div>
   </div>
 </div>
 
 <footer>
-  <p style="text-align:center;">
-    <a href="mailto:jpf2149@colubmia.edu">e-mail</a> ||
+  <p>
+    <a href="mailto:jpf2149@columbia.edu">e-mail</a> ||
     <a href="https://www.instagram.com/hrzberg/">instagram</a>
   </p>
 </footer>
