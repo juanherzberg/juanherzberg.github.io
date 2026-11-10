@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23FBF8F3' stroke='%231C1B19' stroke-width='2'/%3E%3Ctext x='32' y='41' font-family='Georgia,serif' font-style='italic' font-size='26' text-anchor='middle' fill='%231C1B19'%3EJH%3C/text%3E%3C/svg%3E">
+<title>Photography · Juan Herzberg</title>
+<meta property="og:title" content="Photography · Juan Herzberg">
+<meta property="og:image" content="https://juanherzberg.github.io/images/og-photography.jpg">
+<meta name="description" content="Photographs by Juan Herzberg in seven series: Street Sights, Miami Skies, Elsewhere, Serendipity, Pareidolia, Passersby and Fellow Travelers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FBF8F3;--ink:#1C1B19;--muted:#77716A;--line:#E4DED4;--accent:#B5502E}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{color:var(--ink);font-family:"Work Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden;
+  background:radial-gradient(ellipse at 50% 62%,#FFFDF9 0%,#F4EFE6 55%,#E6DFD2 100%)}
+a{color:inherit}
+
+.bar{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px 28px;pointer-events:none}
+.bar>*{pointer-events:auto}
+.back{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:14px}
+.mono{width:32px;height:32px;border-radius:50%;border:1px solid currentColor;display:grid;place-items:center;font-family:"Fraunces",serif;font-size:13px;flex:none}
+.ttl{text-align:right;line-height:1.25}
+.ttl b{font-family:"Fraunces",serif;font-weight:400;font-size:20px;display:block;letter-spacing:-.01em}
+.ttl span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+.head{position:fixed;left:0;right:0;top:11vh;text-align:center;z-index:4;pointer-events:none;transition:opacity .45s,transform .45s}
+.head.out{opacity:0;transform:translateY(-14px)}
+.head .tag{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.head .tag i{font-family:"Fraunces",serif;font-style:italic;color:var(--accent);letter-spacing:0;font-size:14px;margin-right:4px;text-transform:none}
+.head h1{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(38px,6vw,84px);letter-spacing:-.02em;line-height:1.05;margin-top:6px}
+.head p{font-size:14px;color:var(--muted);margin-top:8px}
+
+.stage{position:fixed;inset:0;perspective:1900px;perspective-origin:50% 28%;overflow:hidden;cursor:grab;touch-action:none}
+.stage.drag{cursor:grabbing}
+.rw{position:absolute;left:50%;top:var(--cy,60%);transform-style:preserve-3d;width:0;height:0}
+.ring{position:absolute;transform-style:preserve-3d;width:0;height:0}
+.card{position:absolute;transform-style:preserve-3d}
+.card .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#fff;padding:var(--pad,6px);box-shadow:0 18px 36px -18px rgba(30,20,10,.5);cursor:zoom-in}
+.card .face img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none;background:#EDE7DC}
+.card .back{transform:rotateY(180deg)}
+.shadow{position:fixed;left:50%;bottom:9vh;width:72vw;height:90px;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(60,45,30,.2),transparent 70%);pointer-events:none}
+
+.ui{position:fixed;left:0;right:0;bottom:22px;display:flex;justify-content:center;z-index:5}
+.list{display:flex;gap:2px;flex-wrap:wrap;justify-content:center;max-width:94vw;background:rgba(251,248,243,.7);backdrop-filter:blur(6px);border-radius:999px;padding:4px 10px}
+.list button{border:0;background:none;font-family:"Fraunces",serif;font-size:17px;color:#A39A8E;padding:6px 11px;cursor:pointer;transition:color .3s}
+.list button:hover{color:var(--ink)}
+.list button.on{color:var(--ink);font-style:italic}
+.hint{position:fixed;left:50%;top:calc(11vh + clamp(38px,6vw,84px) + 74px);transform:translateX(-50%);font-size:12.5px;color:var(--muted);transition:opacity .8s;z-index:5;white-space:nowrap}
+.hint.gone{opacity:0}
+
+.lb{position:fixed;inset:0;z-index:100;display:none}
+.lb.on{display:block}
+.lb .bg{position:absolute;inset:0;background:rgba(24,20,17,0);transition:background .5s}
+.lb.open .bg{background:rgba(24,20,17,.9)}
+.lb .pic{position:fixed;object-fit:cover;box-shadow:0 40px 80px -20px rgba(0,0,0,.7);transition:all .6s cubic-bezier(.2,.8,.2,1);border:8px solid #fff;cursor:zoom-out;touch-action:none}
+.lb .meta{position:absolute;left:0;right:0;bottom:22px;text-align:center;color:#EDE6DB;opacity:0;transition:opacity .4s .3s;pointer-events:none}
+.lb.open .meta{opacity:1}
+.lb .meta b{font-family:"Fraunces",serif;font-weight:400;font-size:20px;display:block}
+.lb .meta span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#A89F94}
+.lb .nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.06);color:#fff;font-size:20px;cursor:pointer;opacity:0;transition:opacity .4s .3s}
+.lb.open .nav{opacity:1}
+.lb .prev{left:24px}.lb .next{right:24px}
+.lb .x{position:absolute;top:20px;right:24px;background:none;border:0;color:#fff;font-size:30px;cursor:pointer;opacity:.85}
+
+@media (max-width:760px){
+  .bar{padding:12px 14px}
+  .back span:not(.mono){display:none}
+  .ttl b{font-size:16px}.ttl span{font-size:9.5px}
+  .head{top:10vh}.head p{display:none}
+  .list button{font-size:14px;padding:5px 7px}
+  .list{border-radius:18px}
+  .hint{top:calc(10vh + 92px);white-space:normal;width:86vw;text-align:center}
+  .lb .nav{display:none}
+}
+@media (prefers-reduced-motion:reduce){.lb .pic{transition:none}.head{transition:none}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <a class="back" href="../"><span class="mono">JH</span><span>← Juan Herzberg</span></a>
+  <div class="ttl"><b>Photography</b><span>209 photographs · 7 series</span></div>
+</header>
+<div class="head"><div class="tag"></div><h1></h1><p></p></div>
+<div class="shadow"></div>
+<div class="stage" aria-label="Rotating ring of photographs"></div>
+<div class="hint">Drag or scroll to spin · click any photo · ↑ ↓ to change series</div>
+<div class="ui"><div class="list" role="tablist"></div></div>
+<div class="lb" aria-hidden="true">
+  <div class="bg"></div>
+  <img class="pic" alt="">
+  <button class="nav prev" aria-label="Previous">←</button>
+  <button class="nav next" aria-label="Next">→</button>
+  <button class="x" aria-label="Close">×</button>
+  <div class="meta"><b></b><span></span></div>
+</div>
+<script>
+const MAN={"street-sights":[["street-sights-01.jpg",0.771],["street-sights-02.jpg",0.75],["street-sights-03.jpg",0.627],["street-sights-04.jpg",0.75],["street-sights-05.jpg",0.75],["street-sights-06.jpg",1.333],["street-sights-07.jpg",0.75],["street-sights-08.jpg",0.7],["street-sights-09.jpg",0.562],["street-sights-10.jpg",0.562],["street-sights-11.jpg",0.738],["street-sights-12.jpg",0.75],["street-sights-13.jpg",1.141],["street-sights-14.jpg",0.75],["street-sights-15.jpg",0.75],["street-sights-16.jpg",0.714],["street-sights-17.jpg",0.75],["street-sights-18.jpg",0.75],["street-sights-19.jpg",0.75],["street-sights-20.jpg",0.75],["street-sights-21.jpg",0.75],["street-sights-22.jpg",0.75],["street-sights-23.jpg",0.75],["street-sights-24.jpg",0.75],["street-sights-25.jpg",0.75],["street-sights-26.jpg",0.968],["street-sights-27.jpg",0.709]],"miami-skies":[["miami-skies-01.jpg",1.296],["miami-skies-02.jpg",1.366],["miami-skies-03.jpg",0.562],["miami-skies-04.jpg",0.75],["miami-skies-05.jpg",0.75],["miami-skies-06.jpg",0.736],["miami-skies-07.jpg",0.8],["miami-skies-08.jpg",0.75],["miami-skies-09.jpg",1.333],["miami-skies-10.jpg",1.333],["miami-skies-11.jpg",0.75],["miami-skies-12.jpg",0.75],["miami-skies-13.jpg",1.333],["miami-skies-14.jpg",0.748],["miami-skies-15.jpg",0.75],["miami-skies-16.jpg",0.75],["miami-skies-17.jpg",0.75],["miami-skies-18.jpg",0.75],["miami-skies-19.jpg",0.75],["miami-skies-20.jpg",0.67],["miami-skies-21.jpg",0.75],["miami-skies-22.jpg",0.613],["miami-skies-23.jpg",0.75],["miami-skies-24.jpg",0.75],["miami-skies-25.jpg",0.75],["miami-skies-26.jpg",1.333],["miami-skies-27.jpg",1.333],["miami-skies-28.jpg",1.333],["miami-skies-29.jpg",0.736],["miami-skies-30.jpg",0.75],["miami-skies-31.jpg",0.698],["miami-skies-32.jpg",0.78],["miami-skies-33.jpg",0.75],["miami-skies-34.jpg",0.75],["miami-skies-35.jpg",1.333]],"elsewhere":[["elsewhere-01.jpg",0.886],["elsewhere-02.jpg",0.562],["elsewhere-03.jpg",1.333],["elsewhere-04.jpg",0.75],["elsewhere-05.jpg",1.333],["elsewhere-06.jpg",0.8],["elsewhere-07.jpg",0.75],["elsewhere-08.jpg",1.004],["elsewhere-09.jpg",0.562],["elsewhere-10.jpg",0.8],["elsewhere-11.jpg",1.605],["elsewhere-12.jpg",0.8],["elsewhere-13.jpg",0.75],["elsewhere-14.jpg",0.75],["elsewhere-15.jpg",1.085],["elsewhere-16.jpg",1.333],["elsewhere-17.jpg",1.333],["elsewhere-18.jpg",1.333],["elsewhere-19.jpg",0.75],["elsewhere-20.jpg",0.75],["elsewhere-21.jpg",0.75],["elsewhere-22.jpg",0.75],["elsewhere-23.jpg",0.75],["elsewhere-24.jpg",0.75],["elsewhere-25.jpg",1.0],["elsewhere-26.jpg",0.745],["elsewhere-27.jpg",1.333],["elsewhere-28.jpg",0.762],["elsewhere-29.jpg",1.333],["elsewhere-30.jpg",0.75],["elsewhere-31.jpg",1.333],["elsewhere-32.jpg",0.616],["elsewhere-33.jpg",0.732],["elsewhere-34.jpg",0.75],["elsewhere-35.jpg",0.75],["elsewhere-36.jpg",1.551],["elsewhere-37.jpg",1.333],["elsewhere-38.jpg",0.75],["elsewhere-39.jpg",0.75],["elsewhere-40.jpg",0.75],["elsewhere-41.jpg",0.75],["elsewhere-42.jpg",0.75],["elsewhere-43.jpg",0.75],["elsewhere-44.jpg",0.761],["elsewhere-45.jpg",1.965],["elsewhere-46.jpg",0.75],["elsewhere-47.jpg",0.861],["elsewhere-48.jpg",0.75],["elsewhere-49.jpg",0.773],["elsewhere-50.jpg",0.75],["elsewhere-51.jpg",0.75],["elsewhere-52.jpg",0.75],["elsewhere-53.jpg",1.397],["elsewhere-54.jpg",0.75],["elsewhere-55.jpg",0.714],["elsewhere-56.jpg",0.75],["elsewhere-57.jpg",1.333],["elsewhere-58.jpg",1.0],["elsewhere-59.jpg",0.75],["elsewhere-60.jpg",0.7],["elsewhere-61.jpg",1.1],["elsewhere-62.jpg",0.75],["elsewhere-63.jpg",0.675],["elsewhere-64.jpg",0.75]],"serendipity":[["serendipity-01.jpg",0.752],["serendipity-02.jpg",0.8],["serendipity-03.jpg",0.75],["serendipity-04.jpg",1.0],["serendipity-05.jpg",0.75],["serendipity-06.jpg",0.905],["serendipity-07.jpg",0.562],["serendipity-08.jpg",0.562],["serendipity-09.jpg",0.802],["serendipity-10.jpg",0.562],["serendipity-11.jpg",0.562],["serendipity-12.jpg",0.562],["serendipity-13.jpg",0.959],["serendipity-14.jpg",0.695],["serendipity-15.jpg",0.661],["serendipity-16.jpg",0.727],["serendipity-17.jpg",1.333],["serendipity-18.jpg",0.655],["serendipity-19.jpg",0.75],["serendipity-20.jpg",0.639],["serendipity-21.jpg",0.75],["serendipity-22.jpg",0.75],["serendipity-23.jpg",0.75],["serendipity-24.jpg",0.639],["serendipity-25.jpg",0.75],["serendipity-26.jpg",0.77],["serendipity-27.jpg",0.75],["serendipity-28.jpg",0.75],["serendipity-29.jpg",0.748],["serendipity-30.jpg",0.709],["serendipity-31.jpg",0.75],["serendipity-32.jpg",0.75],["serendipity-33.jpg",0.75],["serendipity-34.jpg",0.75],["serendipity-35.jpg",0.666],["serendipity-36.jpg",0.784],["serendipity-37.jpg",0.75],["serendipity-38.jpg",0.75],["serendipity-39.jpg",0.843],["serendipity-40.jpg",0.75],["serendipity-41.jpg",0.75],["serendipity-42.jpg",0.816],["serendipity-43.jpg",0.75],["serendipity-44.jpg",0.63],["serendipity-45.jpg",0.75],["serendipity-46.jpg",0.75],["serendipity-47.jpg",0.75]],"pareidolia":[["pareidolia-01.jpg",0.75],["pareidolia-02.jpg",0.795],["pareidolia-03.jpg",0.804],["pareidolia-04.jpg",0.75],["pareidolia-05.jpg",1.197],["pareidolia-06.jpg",0.75]],"passersby":[["passersby-01.jpg",0.761],["passersby-02.jpg",0.732],["passersby-03.jpg",0.705],["passersby-04.jpg",0.75],["passersby-05.jpg",0.65],["passersby-06.jpg",0.65],["passersby-07.jpg",0.598],["passersby-08.jpg",0.75],["passersby-09.jpg",0.677],["passersby-10.jpg",0.83]],"fellow-travelers":[["fellow-travelers-01.jpg",0.75],["fellow-travelers-02.jpg",1.47],["fellow-travelers-03.jpg",0.918],["fellow-travelers-04.jpg",0.736],["fellow-travelers-05.jpg",0.75],["fellow-travelers-06.jpg",0.75],["fellow-travelers-07.jpg",0.562],["fellow-travelers-08.jpg",0.562],["fellow-travelers-09.jpg",0.562],["fellow-travelers-10.jpg",0.75],["fellow-travelers-11.jpg",0.661],["fellow-travelers-12.jpg",0.75],["fellow-travelers-13.jpg",0.75],["fellow-travelers-14.jpg",0.755],["fellow-travelers-15.jpg",0.75],["fellow-travelers-16.jpg",0.75],["fellow-travelers-17.jpg",1.333],["fellow-travelers-18.jpg",1.369],["fellow-travelers-19.jpg",0.784],["fellow-travelers-20.jpg",0.614]]};
+const SERIES=[
+ {slug:"street-sights",name:"Street Sights",blurb:"Words left on walls, benches and doors, in whatever language the city speaks."},
+ {slug:"miami-skies",name:"Miami Skies",blurb:"Looking up in Miami."},
+ {slug:"elsewhere",name:"Elsewhere",blurb:"Places far from home."},
+ {slug:"serendipity",name:"Serendipity",blurb:"Moments that were never planned."},
+ {slug:"pareidolia",name:"Pareidolia",blurb:"Faces and hearts hiding in everyday things."},
+ {slug:"passersby",name:"Passersby",blurb:"People on their way somewhere else."},
+ {slug:"fellow-travelers",name:"Fellow Travelers",blurb:"The animals met along the way."}
+];
+SERIES.forEach(s=>{s.photos=MAN[s.slug].map(([f,ar])=>({f,ar}));s.n=s.photos.length});
+const ROMAN=["I","II","III","IV","V","VI","VII"];
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $=(q,el=document)=>el.querySelector(q), $$=(q,el=document)=>[...el.querySelectorAll(q)];
+const N=SERIES.length;
+const stage=$(".stage");
+const O={i:0,rings:[],a:0,v:0,tilt:-9,drag:null,switching:null};
+const BASE_V=reduce?0:-.05;
+
+/* ---------- build ---------- */
+function layout(se,k=1){
+  const narrow=innerWidth<760;
+  const maxPer=narrow?10:14;
+  const tiers=Math.ceil(se.n/maxPer), per=Math.ceil(se.n/tiers);
+  const avail=innerHeight*(narrow?.44:.46);
+  let ch=Math.min(narrow?250:330,avail/(tiers+.16*(tiers-1)));
+  const rowsOf=[];for(let t=0;t<tiers;t++)rowsOf.push(se.photos.map((p,k)=>({...p,k})).slice(t*per,t*per+per));
+  const gapF=.2;
+  const circ=c=>Math.max(...rowsOf.map(r=>r.reduce((a,p)=>a+p.ar*c+gapF*c,0)));
+  let R=circ(ch)/(2*Math.PI);
+  const Rmax=narrow?innerWidth*.85:Math.min(innerWidth*.42,720);
+  const Rmin=narrow?innerWidth*.45:Math.min(innerWidth*.26,380);
+  if(R>Rmax){ch*=Rmax/R;R=Rmax}
+  if(k!==1){ch*=k;R*=k}
+  R=Math.max(R,Rmin*Math.min(1,k));
+  return {tiers,rowsOf,ch,R,gy:ch*.16};
+}
+function buildRing(i,k=1){
+  const se=SERIES[i];const L=layout(se,k);
+  const rw=document.createElement("div");rw.className="rw";
+  const ring=document.createElement("div");ring.className="ring";rw.appendChild(ring);
+  const cards=[];
+  L.rowsOf.forEach((row,t)=>{
+    const y=(t-(L.tiers-1)/2)*(L.ch+L.gy);
+    const ws=row.map(p=>p.ar*L.ch);const total=ws.reduce((a,b)=>a+b,0);
+    const step=(2*Math.PI*L.R-total)/row.length;
+    let acc=(t%2)*(step+ws[0])/2; // brick offset on alternate tiers
+    row.forEach((p,j)=>{
+      const w=ws[j];const ang=(acc+w/2)/L.R*180/Math.PI;acc+=w+step;
+      const c=document.createElement("div");c.className="card";
+      Object.assign(c.style,{width:w+"px",height:L.ch+"px",left:-w/2+"px",top:y-L.ch/2+"px",transform:`rotateY(${ang}deg) translateZ(${L.R}px)`});
+      c.style.setProperty("--pad",Math.max(3,L.ch*.022)+"px");
+      c.innerHTML=`<div class="face" data-k="${p.k}"><img data-src="wall/${p.f}" alt="${se.name}, photograph ${p.k+1}" draggable="false"></div><div class="face back" data-k="${p.k}"><img data-src="wall/${p.f}" alt="" draggable="false"></div>`;
+      ring.appendChild(c);cards.push({el:c,ang,faces:$$(".face",c)});
+    });
+  });
+  rw.style.display="none";stage.appendChild(rw);
+  return {rw,ring,R:L.R,cards,loaded:false,dy:0};
+}
+/* fit each ring into the band between the title and the series list */
+function band(){
+  const hr=$(".hint").getBoundingClientRect();
+  const top=Math.max(head.getBoundingClientRect().bottom,hr.height?hr.bottom:0)+(innerWidth<760?22:30);
+  const bottom=$(".list").getBoundingClientRect().top-(innerWidth<760?18:26);
+  return {top,bottom,h:bottom-top,c:(top+bottom)/2};
+}
+function measure(rg){
+  rg.rw.style.display="";
+  rg.rw.style.transform=`translate3d(0,${rg.dy}px,${-rg.R}px) rotateX(${O.tilt}deg)`;
+  let t=1e9,b=-1e9;
+  for(const c of rg.cards){const r=c.el.getBoundingClientRect();if(r.height){t=Math.min(t,r.top);b=Math.max(b,r.bottom)}}
+  rg.rw.style.display="none";
+  return {t,b,h:b-t,c:(t+b)/2};
+}
+function fitRing(i){
+  const B=band();let rg=O.rings[i];
+  let m=measure(rg);
+  if(B.h>40&&m.h>B.h){
+    const k=B.h/m.h*.96;rg.rw.remove();rg=buildRing(i,k);O.rings[i]=rg;m=measure(rg);
+  }
+  for(let n=0;n<2;n++){rg.dy+=B.c-m.c;m=measure(rg)}
+}
+function build(){
+  stage.innerHTML="";O.rings=SERIES.map((_,i)=>buildRing(i));
+  const keep=O.i;
+  SERIES.forEach((_,i)=>{setHeadText(i);fitRing(i)});
+  setHeadText(keep);load(keep);
+}
+function load(i){const r=O.rings[i];if(r.loaded)return;r.loaded=true;$$("img[data-src]",r.rw).forEach(im=>{im.src=im.dataset.src})}
+
+/* ---------- head + list ---------- */
+const head=$(".head");
+function setHeadText(i){const se=SERIES[i];$(".tag",head).innerHTML=`<i>${ROMAN[i]}</i> ${se.n} photographs`;$("h1",head).textContent=se.name;$("p",head).textContent=se.blurb}
+function setHead(i,anim){
+  const se=SERIES[i];
+  const fill=()=>setHeadText(i);
+  if(anim&&!reduce){head.classList.add("out");setTimeout(()=>{fill();head.classList.remove("out")},450)}else fill();
+  $$(".list button").forEach((b,j)=>b.classList.toggle("on",j===i));
+  try{history.replaceState(null,"","#"+se.slug)}catch(e){}
+}
+$(".list").innerHTML=SERIES.map((s,i)=>`<button data-i="${i}" role="tab">${s.name}</button>`).join("");
+$$(".list button").forEach(b=>b.onclick=()=>switchRing(+b.dataset.i));
+function switchRing(i){
+  if(i===O.i||O.switching||i<0||i>=N)return;
+  load(i);
+  O.switching={from:O.i,to:i,t0:performance.now(),dir:i>O.i?1:-1};O.i=i;
+  setHead(i,true);hideHint();
+  if(!reduce)O.v=-1.4;
+  // warm up neighbours
+  if(i+1<N)setTimeout(()=>load(i+1),1500);
+}
+function hideHint(){$(".hint").classList.add("gone")}
+setTimeout(hideHint,9000);
+
+/* ---------- animation loop ---------- */
+const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+function frame(now){
+  if(O.rings.length&&!lbState){
+    if(!O.drag){O.v+=(BASE_V-O.v)*.03;O.a+=O.v}
+    const sw=O.switching;let p=1;
+    if(sw){p=Math.min(1,(now-sw.t0)/(reduce?1:1100));if(p>=1)O.switching=null}
+    const e=ease(p);
+    O.rings.forEach((rg,j)=>{
+      let y,f,z=0,rx=O.tilt;
+      if(sw&&j===sw.from){y=-e*innerHeight*1.1*sw.dir;f=1-e;z=-e*700;rx=O.tilt-e*25*sw.dir}
+      else if(sw&&j===sw.to){y=(1-e)*innerHeight*1.1*sw.dir;f=e;z=-(1-e)*700;rx=O.tilt+(1-e)*25*sw.dir}
+      else if(j===O.i){y=0;f=1}
+      else{if(rg.rw.style.display!=="none")rg.rw.style.display="none";return}
+      rg.rw.style.display="";
+      rg.rw.style.transform=`translate3d(0,${y+rg.dy}px,${z-rg.R}px) rotateX(${rx}deg)`;
+      rg.ring.style.transform=`rotateY(${O.a}deg)`;
+      for(const c of rg.cards){
+        const d=(Math.cos((c.ang+O.a)*Math.PI/180)+1)/2;
+        const op=((.22+.78*d)*f).toFixed(3);
+        c.faces[0].style.opacity=op;c.faces[1].style.opacity=(op*.75).toFixed(3);
+      }
+    });
+  }
+  requestAnimationFrame(frame);
+}
+
+/* ---------- input ---------- */
+const degPerPx=()=>180/(Math.PI*O.rings[O.i].R);
+stage.addEventListener("pointerdown",e=>{O.drag={x:e.clientX,y:e.clientY,lx:e.clientX,a:O.a,t0:O.tilt,moved:false};stage.setPointerCapture(e.pointerId)});
+stage.addEventListener("pointermove",e=>{
+  if(!O.drag)return;const dx=e.clientX-O.drag.x,dy=e.clientY-O.drag.y;
+  if(!O.drag.moved&&Math.hypot(dx,dy)>6){O.drag.moved=true;stage.classList.add("drag");hideHint()}
+  if(O.drag.moved){O.v=(e.clientX-O.drag.lx)*degPerPx();O.drag.lx=e.clientX;O.a=O.drag.a+dx*degPerPx();
+    O.tilt=Math.max(-14,Math.min(-4,O.drag.t0+dy*.03))}
+});
+stage.addEventListener("pointerup",e=>{
+  if(!O.drag)return;stage.classList.remove("drag");
+  if(!O.drag.moved){const el=document.elementFromPoint(e.clientX,e.clientY);const f=el&&el.closest(".face");
+    if(f){hideHint();openLB(O.i,+f.dataset.k,f)}}
+  O.drag=null;
+});
+stage.addEventListener("pointercancel",()=>{O.drag=null;stage.classList.remove("drag")});
+addEventListener("wheel",e=>{if(lbState)return;O.v+=(e.deltaY+e.deltaX)*-.0035;hideHint()},{passive:true});
+addEventListener("keydown",e=>{
+  if(lbState){if(e.key==="Escape")closeLB();if(e.key==="ArrowRight")stepLB(1);if(e.key==="ArrowLeft")stepLB(-1);return}
+  if(e.key==="ArrowDown"){e.preventDefault();switchRing(O.i+1)}
+  if(e.key==="ArrowUp"){e.preventDefault();switchRing(O.i-1)}
+  if(e.key==="ArrowRight")O.v-=1.2;
+  if(e.key==="ArrowLeft")O.v+=1.2;
+});
+
+/* ---------- lightbox ---------- */
+const lb=$(".lb"), lbImg=$(".pic",lb);
+let lbState=null;
+function targetRect(ar){
+  const mw=innerWidth*(innerWidth<760?.92:.8), mh=innerHeight*.74;
+  let w=mw,h=w/ar; if(h>mh){h=mh;w=h*ar}
+  return {left:(innerWidth-w)/2,top:(innerHeight-h)/2-20,width:w,height:h};
+}
+function place(r){Object.assign(lbImg.style,{left:r.left+"px",top:r.top+"px",width:r.width+"px",height:r.height+"px"})}
+function showHi(si,k){const p=SERIES[si].photos[k];const hi=new Image();hi.onload=()=>{if(lbState&&lbState.si===si&&lbState.k===k)lbImg.src=hi.src};hi.src="full/"+p.f}
+function openLB(si,k,fromEl){
+  lbState={si,k};const p=SERIES[si].photos[k];
+  lbImg.src="wall/"+p.f;showHi(si,k);
+  lbImg.style.transition="none";
+  place(fromEl.getBoundingClientRect());lbImg.style.opacity=1;
+  lb.classList.add("on");lb.setAttribute("aria-hidden","false");
+  lbImg.offsetWidth;lbImg.style.transition="";
+  requestAnimationFrame(()=>{lb.classList.add("open");place(targetRect(p.ar))});
+  meta();
+}
+function meta(){const s=SERIES[lbState.si];$(".meta b",lb).textContent=s.name;$(".meta span",lb).textContent=`${lbState.k+1} / ${s.n}`}
+function stepLB(d){
+  const s=SERIES[lbState.si];lbState.k=(lbState.k+d+s.n)%s.n;const {si,k}=lbState;const p=s.photos[k];
+  lbImg.style.opacity=0;
+  setTimeout(()=>{lbImg.style.transition="none";lbImg.src="wall/"+p.f;showHi(si,k);place(targetRect(p.ar));lbImg.offsetWidth;lbImg.style.transition="";lbImg.style.opacity=1;meta()},reduce?0:200);
+}
+function closeLB(){
+  if(!lbState)return;lb.classList.remove("open");lbImg.style.opacity=0;lbState=null;
+  setTimeout(()=>{lb.classList.remove("on");lb.setAttribute("aria-hidden","true")},reduce?0:450);
+}
+$(".bg",lb).onclick=closeLB;$(".x",lb).onclick=closeLB;
+$(".prev",lb).onclick=()=>stepLB(-1);$(".next",lb).onclick=()=>stepLB(1);
+let sw=null;
+lbImg.addEventListener("pointerdown",e=>{sw={x:e.clientX}});
+lbImg.addEventListener("pointerup",e=>{if(!sw)return;const dx=e.clientX-sw.x;sw=null;if(Math.abs(dx)>40)stepLB(dx<0?1:-1);else closeLB()});
+lbImg.addEventListener("dragstart",e=>e.preventDefault());
+
+/* ---------- start ---------- */
+if(matchMedia("(pointer: coarse)").matches)$(".hint").textContent="Swipe to spin · tap a photo · pick a series below";
+{const h=location.hash.slice(1);const i=SERIES.findIndex(s=>s.slug===h);if(i>0)O.i=i}
+function placeCenter(){document.documentElement.style.setProperty("--cy",(innerWidth<760?55:58)+"%")}
+placeCenter();setHead(O.i,false);build();requestAnimationFrame(frame);
+setTimeout(()=>{if(O.i+1<N)load(O.i+1)},2500);
+let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>{placeCenter();build();O.rings.forEach((r,j)=>{if(j===O.i)load(j)})},200)});
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{build();O.rings.forEach((r,j)=>{if(j===O.i)load(j)})});
+
+</script>
+</body>
+</html>

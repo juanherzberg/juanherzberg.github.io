@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Juan Herzberg: seven years of teaching and coaching, now building tools that help people find their words, across languages.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Juan Herzberg · From words to connection">
+<meta property="og:description" content="Seven years of teaching and coaching. Now building tools that help people find their words, across languages.">
+<meta property="og:url" content="https://juanherzberg.github.io/">
+<meta property="og:image" content="https://juanherzberg.github.io/images/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23FBF8F3' stroke='%231C1B19' stroke-width='2'/%3E%3Ctext x='32' y='41' font-family='Georgia,serif' font-style='italic' font-size='26' text-anchor='middle' fill='%231C1B19'%3EJH%3C/text%3E%3C/svg%3E">
+<title>Juan Herzberg · From words to connection</title>
+<meta name="description" content="Juan Herzberg: writing, rhetoric and tools that build connection and clarity across languages and cultures.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,900;1,9..144,400&family=Work+Sans:wght@400;500&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Playfair+Display:wght@800;900&family=Noto+Serif+JP:wght@500;900&family=Noto+Naskh+Arabic:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FBF8F3;--ink:#1C1B19;--muted:#5F5B54;--line:#E3DDD2}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Work Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--ink);text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 2rem}
+.serif{font-family:'Fraunces',serif}
+
+/* header */
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding:24px 0;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px;font-family:'Fraunces',serif;font-size:22px;font-weight:500}
+.mono{width:40px;height:40px;border-radius:999px;border:1px solid var(--ink);display:inline-flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:16px;font-style:italic}
+nav{display:flex;flex-wrap:wrap;gap:28px;font-size:15px}
+nav a{padding:12px 0}
+.ul{background-image:linear-gradient(var(--ink),var(--ink));background-size:0 1px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .35s}
+.ul:hover{background-size:100% 1px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:48px;align-items:center;padding:104px 0 112px}
+.hero h1{margin:0 0 28px;font-family:'Fraunces',serif;font-size:72px;line-height:1.04;font-weight:400;letter-spacing:-.02em}
+.cycle{display:inline-grid;font-style:italic}
+.word{grid-area:1/1;opacity:0;animation:cycle 10s infinite}
+.hero p{margin:0;font-size:19px;line-height:1.6;color:var(--muted);max-width:560px}
+.hero .lead{font-family:'Fraunces',serif;font-size:24px;line-height:1.4;color:var(--ink);margin:0 0 18px;max-width:560px}
+.portrait-wrap{display:flex;flex-direction:column;align-items:center;gap:14px}
+.portrait{width:100%;max-width:255px;aspect-ratio:380/460;border-radius:16px;overflow:hidden}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.portrait:hover img{transform:scale(1.06)}
+.hello{font-family:'Fraunces',serif;font-size:16px;font-style:italic;color:var(--muted)}
+
+/* work sections */
+.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,3fr);gap:48px;padding:56px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.label{display:flex;flex-direction:column;gap:8px}
+.label .num{font-size:13px;color:var(--muted)}
+.label h2{margin:0;font-family:'Fraunces',serif;font-size:26px;font-weight:400;font-style:italic}
+.label p{margin:4px 0 0;font-size:15px;line-height:1.6;color:var(--muted)}
+.card{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:32px;align-items:center;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.card:hover{transform:translateY(-6px)}
+.card.stack{display:flex;flex-direction:column;align-items:stretch;gap:14px}
+.card h3{margin:0;font-family:'Fraunces',serif;font-size:32px;font-weight:500;line-height:1.1}
+.card.stack h3{font-size:26px}
+.card p{margin:12px 0 0;font-size:16px;line-height:1.6;color:var(--muted)}
+.card.stack p{margin:0}
+.kicker{font-family:'Noto Serif JP',serif;font-size:15px;color:var(--muted);display:block;margin-bottom:12px}
+.arrow{display:inline-block;transition:transform .3s;font-size:.7em}
+.card:hover .arrow,.photo-text a:hover .arrow{transform:translate(6px,-6px)}
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+
+/* covers: each is a fixed 1200x720 design, scaled to fit its frame */
+.cover-frame{position:relative;width:100%;aspect-ratio:5/3;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.cover{position:absolute;top:0;left:0;width:1200px;height:720px;transform-origin:top left}
+
+/* photography */
+.photo-card{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:32px;align-items:center}
+.photos{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);grid-template-rows:1fr 1fr;gap:10px;height:252px}
+.photos a{position:relative;display:block;border-radius:14px;overflow:hidden;background:#EDE7DC;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.photos a:first-child{grid-row:1/3}
+.photos img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.photos a:hover{transform:translateY(-4px)}
+.photos a:hover img{transform:scale(1.03)}
+.photos .tag{position:absolute;left:12px;bottom:12px;font-size:12px;padding:5px 11px;border-radius:999px;background:rgba(251,248,243,.92);color:var(--ink);opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s}
+.photos a:hover .tag,.photos a:focus-visible .tag{opacity:1;transform:none}
+.photo-text{display:flex;flex-direction:column;gap:12px}
+.photo-text h3{margin:0;font-family:'Fraunces',serif;font-size:32px;font-weight:500;line-height:1.1}
+.photo-text p{margin:0;font-size:16px;line-height:1.6;color:var(--muted)}
+.photo-text .meta{font-size:14px}
+@media (prefers-reduced-motion:reduce){.photos a,.photos img,.photos .tag{transition:none}}
+
+/* contact */
+.contact{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px;padding:48px 0 64px;border-top:1px solid var(--line)}
+.btn{padding:14px 28px;border-radius:999px;background:var(--ink);color:var(--bg);font-size:15px}
+.links{display:flex;flex-wrap:wrap;gap:28px;font-size:15px}
+.links a{padding:12px 0}
+
+/* motion */
+@keyframes cycle{0%{opacity:0;transform:translateY(.35em)}4%,18%{opacity:1;transform:none}22%,100%{opacity:0;transform:translateY(-.35em)}}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.rise{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+@keyframes ring{0%,45%,100%{transform:rotate(0)}5%,15%,25%{transform:rotate(-4deg)}10%,20%,30%{transform:rotate(4deg)}35%{transform:rotate(-1.5deg)}40%{transform:rotate(1.5deg)}}
+.ring-phone{transform-origin:50% 90%}
+.card:hover .ring-phone{animation:ring 1.6s ease-in-out infinite}
+@keyframes fall{0%{transform:translateY(-6px);opacity:0}25%{opacity:1}100%{transform:translateY(12px);opacity:0}}
+.drop{transform-box:fill-box}
+.card:hover .drop{animation:fall .9s linear infinite}
+@keyframes mark{from{background-size:0% 100%}to{background-size:100% 100%}}
+.card:hover .hl{animation:mark .7s ease-out both}
+@keyframes slidein{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+.card:hover .note{animation:slidein .6s ease-out both}
+@keyframes strike{from{background-size:0% 4px}to{background-size:100% 4px}}
+.card:hover .strike{animation:strike .7s ease-out both}
+@keyframes rewrite{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.card:hover .rewrite{display:inline-block;animation:rewrite .7s ease-out .7s both}
+@keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.35)}100%{transform:scale(1)}}
+.card:hover .check{display:inline-block;animation:pop .5s ease-out .8s both}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.word{opacity:1}.word+.word{display:none}}
+
+/* phones and small tablets */
+@media (max-width:860px){
+.wrap{padding:0 1.25rem}
+.hero{grid-template-columns:1fr;padding:56px 0 64px;gap:36px}
+.hero h1{font-size:48px}
+.portrait{max-width:220px}
+.row{grid-template-columns:1fr;gap:20px;padding:40px 0}
+.card{grid-template-columns:1fr;gap:16px}
+.card h3{font-size:26px}
+.pair{grid-template-columns:1fr}
+.photo-card{grid-template-columns:1fr;gap:16px}
+.photos{gap:8px;height:auto;aspect-ratio:1.5/1}
+.photos a{border-radius:10px}
+.photo-text h3{font-size:26px}
+nav{gap:18px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+<a class="brand" href="#top"><span class="mono" aria-hidden="true">JH</span>Juan Herzberg</a>
+<nav>
+<a class="ul" href="#work">Work</a>
+<a class="ul" href="#photography">Photography</a>
+<a class="ul" href="#contact">Contact</a>
+</nav>
+</header>
+
+<main id="top">
+<section class="hero">
+<div>
+<h1 class="rise">From words<br>to
+<span class="cycle">
+<span class="word" style="animation-delay:0s">connection.</span>
+<span class="word" lang="es" style="animation-delay:2s">conexión.</span>
+<span class="word" lang="ar" dir="rtl" style="animation-delay:4s;font-family:'Noto Naskh Arabic',serif;font-style:normal">تواصل.</span>
+<span class="word" lang="ja" style="animation-delay:6s;font-family:'Noto Serif JP',serif;font-style:normal">つながり。</span>
+<span class="word" lang="fr" style="animation-delay:8s">connexion.</span>
+</span></h1>
+<p class="rise lead" style="animation-delay:.1s">Seven years of teaching and coaching. Now building tools that help people find their words, across languages.</p>
+<p class="rise" style="animation-delay:.15s">Columbia IR and human rights, UNHCR and OECD, 7+ years of writing and rhetorical coaching. Passionate about rhetoric, intercultural communication, and tools that enhance connection and clarity across languages and cultures.</p>
+</div>
+<div class="portrait-wrap rise" style="animation-delay:.3s">
+<div class="portrait"><img src="images/portrait.jpg" alt="Portrait of Juan smiling"></div>
+<span class="hello">Hola, salut, مرحبا, こんにちは</span>
+</div>
+</section>
+
+<section id="work">
+
+<div class="row">
+<div class="label"><span class="num">I</span><h2>Rhetoric and advocacy</h2><p>Working with refugees and rights advocates showed me that whoever finds the right words is the one who gets heard. I want every cause to have language as strong as its case.</p></div>
+<a class="card" href="https://speechwriter-sepia.vercel.app/" target="_blank" rel="noopener">
+<div class="cover-frame"><div class="cover"><div style="width: 1200px; height: 720px; box-sizing: border-box; overflow: hidden; position: relative; font-family: 'Inter', sans-serif; background: #FFFFFF">
+
+<div style="position: absolute; left: 0; right: 0; top: 0"><div style="background: #23395B; padding: 18px 60px; display: flex; align-items: center; gap: 12px"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: #BFD3F0; stroke-width: 1.4"><circle cx="12" cy="12" r="10"></circle><ellipse cx="12" cy="12" rx="4.5" ry="10"></ellipse><path d="M2 12 H22 M4 7 H20 M4 17 H20"></path></svg><span style="font-family: 'Source Serif 4', serif; font-size: 22px; color: #FFFFFF">UN and Advocacy Speechwriter</span></div></div>
+<div style="position: absolute; left: 0; right: 0; top: 62px; padding: 16px 60px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; border-bottom: 1px solid #ECE8E0; background: #FFFFFF"><span style="padding: 8px 16px; border-radius: 999px; background: #23395B; color: #FFFFFF; font-size: 14px; white-space: nowrap">UN General Assembly</span><span style="padding: 8px 16px; border-radius: 999px; background: #23395B; color: #FFFFFF; font-size: 14px; white-space: nowrap">Diplomatic</span><span style="padding: 6px 14px 6px 6px; border-radius: 999px; background: #23395B; color: #FFFFFF; display: flex; gap: 8px; align-items: center; font-size: 14px"><span style="padding: 3px 9px; border-radius: 999px; background: #FBE3EA; color: #A3204A; font-size: 11px; font-weight: 600; letter-spacing: 0.08em">PATHOS</span>Human Story</span><span style="padding: 8px 16px; border-radius: 999px; background: #23395B; color: #FFFFFF; font-size: 14px; white-space: nowrap">Anaphora</span><span style="padding: 8px 16px; border-radius: 999px; background: #23395B; color: #FFFFFF; font-size: 14px; white-space: nowrap">Embodied Witness</span></div>
+<p style="position: absolute; left: 60px; width: 700px; top: 185px; margin: 0; font-family: 'Source Serif 4', serif; font-size: 34px; line-height: 1.75; color: #1E1E1E">Mr. President, <span class="hl" style="background-image: linear-gradient(#DCE6F8,#DCE6F8); background-repeat: no-repeat; background-size: 100% 100%; padding: 0 4px; border-radius: 4px">we have heard these promises before. We have heard them</span> in this very hall. But I have also <span class="hl" style="background-image: linear-gradient(#FBE3EA,#FBE3EA); background-repeat: no-repeat; background-size: 100% 100%; padding: 0 4px; border-radius: 4px; animation-delay: .5s">held the hand of a mother</span> who waited three years for one of them to be kept.</p>
+<div style="position: absolute; left: 800px; top: 130px; bottom: 0; width: 1px; background: #E3DED4"></div>
+<div class="note" style="animation-delay: .3s; position: absolute; left: 830px; top: 190px; width: 310px; display: flex; flex-direction: column; gap: 8px; padding: 16px; border-radius: 12px; background: #F4F7FD; border: 1px solid #DCE6F8"><span style="padding: 3px 9px; border-radius: 999px; background: #DCE6F8; color: #2C4FA8; font-size: 11px; font-weight: 600; letter-spacing: 0.08em">REPETITION</span><span style="font-size: 16px; font-weight: 600; color: #1E1E1E">Anaphora</span><span style="font-size: 14px; line-height: 1.5; color: #555">Repetition builds a sense of broken promises.</span></div>
+<div class="note" style="animation-delay: .8s; position: absolute; left: 830px; top: 400px; width: 310px; display: flex; flex-direction: column; gap: 8px; padding: 16px; border-radius: 12px; background: #FDF4F7; border: 1px solid #FBE3EA"><span style="padding: 3px 9px; border-radius: 999px; background: #FBE3EA; color: #A3204A; font-size: 11px; font-weight: 600; letter-spacing: 0.08em">PATHOS</span><span style="font-size: 16px; font-weight: 600; color: #1E1E1E">Embodied witness</span><span style="font-size: 14px; line-height: 1.5; color: #555">A single human image carries the argument.</span></div>
+<div style="position: absolute; left: 60px; bottom: 50px; padding: 14px 28px; border-radius: 8px; background: #23395B; color: #FFFFFF; font-family: 'Source Serif 4', serif; font-size: 18px">Generate speech</div>
+</div></div></div>
+<div><h3>UN and Advocacy Speechwriter <span class="arrow">↗</span></h3><p>Built on 11,142 UN General Debate speeches, 1946–2025, with controls for audience, tone and rhetorical moves.</p></div>
+</a>
+</div>
+
+<div class="row">
+<div class="label"><span class="num">II</span><h2>Language and communication</h2><p>Living in many languages taught me that meaning is more than translation. I build for the moments when people reach for each other across a language gap.</p></div>
+<a class="card" href="https://whimsify.app/" target="_blank" rel="noopener">
+<div class="cover-frame"><div class="cover"><div style="width: 1200px; height: 720px; box-sizing: border-box; overflow: hidden; position: relative; background: #EEECE7; font-family: Inter, sans-serif; color: #1A1A1A">
+<img class="ring-phone" src="images/whimsify-phone.png" alt="Red rotary phone labeled Whimsy Hotline" style="position: absolute; left: 30px; top: 120px; width: 576px; height: 483px; display: block">
+<div style="position: absolute; left: 630px; top: 0; bottom: 0; width: 500px; display: flex; flex-direction: column; justify-content: center; gap: 26px">
+<span style="font-family: Fraunces, serif; font-size: 116px; font-weight: 900; letter-spacing: -0.03em; line-height: 0.95; color: #161616">Whimsify</span>
+<span style="font-family: Inter, sans-serif; font-style: italic; font-size: 44px; line-height: 1.2; color: #4A4744">Same message.<br>Different line.</span>
+</div>
+</div></div></div>
+<div><h3>Whimsify <span class="arrow">↗</span></h3><p>Rewrites any phrase in a chosen whimsical voice, in eight languages, without storing what you type. Also available as an iPhone app.</p></div>
+</a>
+</div>
+
+<div class="row">
+<div class="label"><span class="num">III</span><h2>Visual storytelling</h2><p>Learning Japanese taught me that a character sticks once it has a story. I want learning a language to feel like watching something come alive.</p></div>
+<a class="card" href="https://juanherzberg.github.io/StroketoStory/" target="_blank" rel="noopener">
+<div class="cover-frame"><div class="cover"><div style="width: 1200px; height: 720px; position: relative; overflow: hidden; font-family: Inter, sans-serif">
+<svg width="1200" height="720" viewBox="0 0 1200 720" aria-hidden="true" style="position: absolute; inset: 0">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2D9DE"></stop><stop offset="1" stop-color="#FBF1EF"></stop></linearGradient></defs>
+<rect width="1200" height="720" style="fill: url(#sky)"></rect>
+<circle cx="960" cy="170" r="150" style="fill: #D35A43"></circle>
+
+<rect x="760" y="70" width="440" height="22" rx="11" style="fill: #FFFFFF; opacity: 0.85"></rect>
+<rect x="560" y="250" width="380" height="24" rx="12" style="fill: #FFFFFF; opacity: 0.85"></rect>
+<rect x="640" y="290" width="240" height="18" rx="9" style="fill: #FFFFFF; opacity: 0.85"></rect>
+<path d="M600 600 L960 250 L1200 470 L1200 600 Z" style="fill: #AFBFD0"></path>
+<path d="M915 290 L960 250 L1010 292 L992 308 L975 290 L958 312 L940 290 L925 305 Z" style="fill: #FFFFFF"></path>
+<path d="M0 640 Q300 560 620 600 Q900 640 1200 580 L1200 720 L0 720 Z" style="fill: #7C93B0"></path>
+<path d="M0 690 Q400 650 700 680 Q950 700 1200 660 L1200 720 L0 720 Z" style="fill: #4A6189"></path>
+<g style="fill: #D35A43"><rect x="1050" y="470" width="110" height="12" rx="3"></rect><rect x="1060" y="496" width="90" height="8"></rect><rect x="1068" y="478" width="10" height="120"></rect><rect x="1132" y="478" width="10" height="120"></rect></g>
+<rect x="1046" y="464" width="118" height="7" rx="3" style="fill: #1F2A4A"></rect>
+<ellipse cx="891" cy="194" rx="7" ry="4" transform="rotate(101 891 194)" style="fill: #EBA6B7; opacity: 0.75"></ellipse><ellipse cx="609" cy="114" rx="7" ry="4" transform="rotate(137 609 114)" style="fill: #EBA6B7; opacity: 0.75"></ellipse><ellipse cx="656" cy="414" rx="7" ry="4" transform="rotate(149 656 414)" style="fill: #EBA6B7; opacity: 0.75"></ellipse><ellipse cx="619" cy="559" rx="7" ry="4" transform="rotate(54 619 559)" style="fill: #EBA6B7; opacity: 0.75"></ellipse><ellipse cx="598" cy="128" rx="7" ry="4" transform="rotate(111 598 128)" style="fill: #EBA6B7; opacity: 0.75"></ellipse><ellipse cx="988" cy="111" rx="7" ry="4" transform="rotate(61 988 111)" style="fill: #EBA6B7; opacity: 0.75"></ellipse><ellipse cx="652" cy="604" rx="7" ry="4" transform="rotate(108 652 604)" style="fill: #EBA6B7; opacity: 0.75"></ellipse><ellipse cx="620" cy="619" rx="7" ry="4" transform="rotate(31 620 619)" style="fill: #EBA6B7; opacity: 0.75"></ellipse><ellipse cx="788" cy="636" rx="7" ry="4" transform="rotate(15 788 636)" style="fill: #EBA6B7; opacity: 0.75"></ellipse><ellipse cx="1150" cy="639" rx="7" ry="4" transform="rotate(101 1150 639)" style="fill: #EBA6B7; opacity: 0.75"></ellipse><ellipse cx="610" cy="266" rx="7" ry="4" transform="rotate(11 610 266)" style="fill: #EBA6B7; opacity: 0.75"></ellipse><ellipse cx="1130" cy="176" rx="7" ry="4" transform="rotate(74 1130 176)" style="fill: #EBA6B7; opacity: 0.75"></ellipse><ellipse cx="989" cy="187" rx="7" ry="4" transform="rotate(138 989 187)" style="fill: #EBA6B7; opacity: 0.75"></ellipse><ellipse cx="680" cy="624" rx="7" ry="4" transform="rotate(78 680 624)" style="fill: #EBA6B7; opacity: 0.75"></ellipse><ellipse cx="1133" cy="225" rx="7" ry="4" transform="rotate(26 1133 225)" style="fill: #EBA6B7; opacity: 0.75"></ellipse><ellipse cx="1155" cy="624" rx="7" ry="4" transform="rotate(163 1155 624)" style="fill: #EBA6B7; opacity: 0.75"></ellipse><ellipse cx="752" cy="421" rx="7" ry="4" transform="rotate(24 752 421)" style="fill: #EBA6B7; opacity: 0.75"></ellipse><ellipse cx="1120" cy="104" rx="7" ry="4" transform="rotate(144 1120 104)" style="fill: #EBA6B7; opacity: 0.75"></ellipse><ellipse cx="621" cy="250" rx="7" ry="4" transform="rotate(127 621 250)" style="fill: #EBA6B7; opacity: 0.75"></ellipse><ellipse cx="1104" cy="477" rx="7" ry="4" transform="rotate(80 1104 477)" style="fill: #EBA6B7; opacity: 0.75"></ellipse><ellipse cx="1036" cy="639" rx="7" ry="4" transform="rotate(116 1036 639)" style="fill: #EBA6B7; opacity: 0.75"></ellipse><ellipse cx="930" cy="346" rx="7" ry="4" transform="rotate(63 930 346)" style="fill: #EBA6B7; opacity: 0.75"></ellipse>
+</svg>
+<div style="position: absolute; left: 80px; top: 60px; display: flex; align-items: center; gap: 14px"><span lang="ja" style="width: 52px; height: 52px; border-radius: 8px; background: #D35A43; color: #FFFFFF; font-family: 'Noto Serif JP', serif; font-size: 30px; font-weight: 900; display: flex; align-items: center; justify-content: center; transform: rotate(-4deg)">漢</span><div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; color: #D35A43">KANJI IN MOTION</span><span style="font-family: Fraunces, serif; font-size: 22px; font-weight: 600; color: #1F2A4A">From Stroke to Story</span></div></div><div style="position: absolute; left: 80px; top: 190px; width: 220px; height: 220px; border-radius: 16px; background: #FFFFFF; border: 3px solid #D35A43; box-shadow: 0 14px 30px rgba(31,42,74,0.12)">
+<svg width="214" height="214" viewBox="0 0 100 100" aria-hidden="true" style="position: absolute; inset: 0"><path d="M50 4 V96 M4 50 H96" style="stroke: #EBC3BB; stroke-width: 0.8; stroke-dasharray: 3 3"></path></svg>
+<span lang="ja" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Noto Serif JP', serif; font-size: 150px; font-weight: 900; color: #1F2A4A; line-height: 1">雨</span></div><svg width="110" height="40" viewBox="0 0 110 40" aria-hidden="true" style="position: absolute; left: 320px; top: 280px; fill: none; stroke: #D35A43; stroke-width: 3; stroke-linecap: round"><path d="M4 20 H96" style="stroke-dasharray: 2 10"></path><path d="M86 8 L100 20 L86 32"></path></svg><div style="position: absolute; left: 440px; top: 170px; width: 260px; height: 260px">
+<span lang="ja" aria-hidden="true" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Noto Serif JP', serif; font-size: 200px; font-weight: 900; color: #1F2A4A; opacity: 0.08; line-height: 1">雨</span>
+<svg width="260" height="260" viewBox="0 0 100 100" role="img" aria-label="rain" style="position: absolute; inset: 0"><ellipse cx="50" cy="32" rx="34" ry="16" style="fill: #FFFFFF; stroke: #7C93B0; stroke-width: 3"></ellipse><g style="stroke: #7C93B0; stroke-width: 4; stroke-linecap: round"><path class="drop" d="M30 58 L26 70"></path><path class="drop" d="M48 58 L44 74" style="animation-delay: .3s"></path><path class="drop" d="M66 58 L62 70" style="animation-delay: .6s"></path><path class="drop" d="M38 78 L35 88" style="animation-delay: .45s"></path><path class="drop" d="M58 80 L55 90" style="animation-delay: .15s"></path></g></svg></div><div style="position: absolute; left: 80px; top: 450px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: Fraunces, serif; font-size: 40px; font-weight: 600; color: #1F2A4A"><span lang="ja" style="font-family: 'Noto Serif JP', serif">雨</span> → rain</span><span style="font-size: 17px; color: #4A5470"><span lang="ja">あめ</span> · The drops inside the kanji start to fall.</span></div>
+</div></div></div>
+<div><span class="kicker" lang="ja">動く漢字</span><h3>Kanji in Motion: From Stroke to Story <span class="arrow">↗</span></h3><p>Short animated chapters where each kanji is drawn stroke by stroke, then comes alive in a scene and a spoken sentence. Two chapters out so far, following WaniKani's level order.</p></div>
+</a>
+</div>
+
+<div class="row">
+<div class="label"><span class="num">IV</span><h2>Pedagogy and education</h2><p>From mentoring neurodivergent kids to coaching essays, I've seen how the right question unlocks a voice. I teach so people can say it themselves.</p></div>
+<div class="pair">
+<a class="card stack" href="https://storydetective.app/" target="_blank" rel="noopener">
+<div class="cover-frame"><div class="cover"><div style="width: 1200px; height: 720px; box-sizing: border-box; overflow: hidden; position: relative; background: #F7F5F0; font-family: Inter, sans-serif; color: #1E3040">
+<div style="position: absolute; left: 90px; top: 70px; display: flex; align-items: center; gap: 14px"><svg width="40" height="40" viewBox="0 0 100 100" aria-hidden="true" style="fill: none; stroke: #2B4A63; stroke-width: 9; stroke-linecap: round"><circle cx="42" cy="42" r="30"></circle><path d="M64 64 L90 90"></path></svg><span style="font-family: Fraunces, serif; font-size: 26px; font-weight: 600; color: #1E3040">Story Detective</span></div>
+<div style="position: absolute; left: 90px; right: 90px; top: 200px; display: flex; flex-direction: column; gap: 30px">
+<span style="font-size: 36px; line-height: 1.4; color: #9AA0A6">I learned languages <span class="strike" style="color: #9AA0A6; background-image: linear-gradient(#A87A22,#A87A22); background-repeat: no-repeat; background-position: 0 58%; background-size: 100% 4px">because I like different cultures.</span></span>
+<span class="rewrite" style="font-family: Fraunces, serif; font-size: 54px; line-height: 1.2; color: #1E3040">I learned languages <span style="background: #F4EBD8; padding: 0 8px; border-bottom: 3px solid #A87A22; color: #1E3040">to make sure that no one would be excluded based on the language they speak.</span></span>
+</div><div style="position: absolute; left: 90px; bottom: 60px; display: flex; gap: 14px; align-items: center"><span style="padding: 12px 22px; border-radius: 8px; background: #2B4A63; color: #FFFFFF; font-size: 16px; font-weight: 600">Open My Case →</span><span style="font-size: 15px; color: #5E6670">AI helps you find your depth. You write your own story.</span></div>
+</div></div></div>
+<h3>Story Detective: College Essays <span class="arrow">↗</span></h3>
+<p>The AI asks the questions, students answer them introspectively, their answers reveal their underlying purpose and they get to write every word in their own voice.</p>
+</a>
+<a class="card stack" href="https://juanherzberg.github.io/IdentificationGuide/" target="_blank" rel="noopener">
+<div class="cover-frame"><div class="cover"><div style="width: 1200px; height: 720px; box-sizing: border-box; overflow: hidden; position: relative; background: #E3EAF9; font-family: Inter, sans-serif; color: #1A1A2E">
+
+<div style="position: absolute; left: 60px; top: 60px; width: 560px; padding: 34px; border-radius: 22px; background: #FFFFFF; transform: rotate(-3deg); box-shadow: 0 20px 44px rgba(26,26,46,0.12); display: flex; flex-direction: column; gap: 10px"><span style="font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 900; line-height: 1.02; letter-spacing: -0.01em; color: #1A1A2E; ">Grammar Guide</span><span style="font-size: 15px; font-style: italic; color: #6B6B73; margin-bottom: 8px">Select a rule to study</span><div style="width: 490px; display: flex; align-items: center; gap: 22px; padding: 16px 22px; background: #FFFFFF; border-radius: 12px; border-left: 6px solid #5E80EA; box-shadow: 0 4px 14px rgba(26,26,46,0.05)"><span style="font-size: 16px; font-weight: 600; color: #5E80EA">1</span><div style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 16px; font-weight: 600">She / They Rule</span><span style="font-size: 13px; font-weight: 600; color: #4E9E62">✓ Available</span></div><span style="margin-left: auto; color: #B0AFB5; font-size: 20px">›</span></div><div style="width: 490px; display: flex; align-items: center; gap: 22px; padding: 16px 22px; background: #FFFFFF; border-radius: 12px; border-left: 6px solid #6FB46A; box-shadow: 0 4px 14px rgba(26,26,46,0.05)"><span style="font-size: 16px; font-weight: 600; color: #6FB46A">2</span><div style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 16px; font-weight: 600">Transitions and Semicolons: ITE</span><span style="font-size: 13px; font-weight: 600; color: #4E9E62">✓ Available</span></div><span style="margin-left: auto; color: #B0AFB5; font-size: 20px">›</span></div><div style="width: 490px; display: flex; align-items: center; gap: 22px; padding: 16px 22px; background: #FFFFFF; border-radius: 12px; border-left: 6px solid #DE9548; box-shadow: 0 4px 14px rgba(26,26,46,0.05)"><span style="font-size: 16px; font-weight: 600; color: #DE9548">3</span><div style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 16px; font-weight: 600">SuperCommas: ;and</span><span style="font-size: 13px; font-weight: 600; color: #4E9E62">✓ Available</span></div><span style="margin-left: auto; color: #B0AFB5; font-size: 20px">›</span></div><div style="width: 490px; display: flex; align-items: center; gap: 22px; padding: 16px 22px; background: #FFFFFF; border-radius: 12px; border-left: 6px solid #9071DE; box-shadow: 0 4px 14px rgba(26,26,46,0.05)"><span style="font-size: 16px; font-weight: 600; color: #9071DE">4</span><div style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 16px; font-weight: 600">Wrong Answers</span><span style="font-size: 13px; font-weight: 600; color: #4E9E62">✓ Available</span></div><span style="margin-left: auto; color: #B0AFB5; font-size: 20px">›</span></div></div>
+<div style="position: absolute; left: 560px; top: 200px; padding: 30px; border-radius: 22px; background: #FFFFFF; transform: rotate(2deg); box-shadow: 0 26px 54px rgba(26,26,46,0.16); display: flex; flex-direction: column; gap: 12px"><span style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; color: #A09EA6">ANSWER CHOICES</span>
+<div style="width: 540px; display: flex; align-items: center; gap: 18px; padding: 16px 22px; border-radius: 14px; background: #F5ECE9; border: 2px solid #E9C9C6"><span style="width: 32px; height: 32px; border-radius: 7px; background: #EDD3D0; color: #D9A7A1; display: flex; align-items: center; justify-content: center; font-weight: 600">A</span><span style="font-size: 17px; color: #D9B3AE; background-image: linear-gradient(#D9A7A1,#D9A7A1); background-repeat: no-repeat; background-position: 0 55%; background-size: 100% 4px;" class="strike">species, both native and nonnative,</span></div><div style="width: 540px; display: flex; align-items: center; gap: 18px; padding: 16px 22px; border-radius: 14px; background: #EEF8F0; border: 2px solid #7FC08E"><span style="width: 32px; height: 32px; border-radius: 7px; background: #6FB07E; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 600">B</span><span style="font-size: 17px">species, both native and nonnative;</span><span class="check" style="margin-left: auto; font-size: 22px; color: #4E9E62">✓</span></div><div style="width: 540px; display: flex; align-items: center; gap: 18px; padding: 16px 22px; border-radius: 14px; background: #FFFFFF; border: 2px solid #E3E0DA"><span style="width: 32px; height: 32px; border-radius: 7px; background: #F1EFEC; color: #9C9AA0; display: flex; align-items: center; justify-content: center; font-weight: 600">C</span><span style="font-size: 17px">species; both native and nonnative,</span></div><div style="width: 540px; display: flex; align-items: center; gap: 18px; padding: 16px 22px; border-radius: 14px; background: #F5ECE9; border: 2px solid #E9C9C6"><span style="width: 32px; height: 32px; border-radius: 7px; background: #EDD3D0; color: #D9A7A1; display: flex; align-items: center; justify-content: center; font-weight: 600">D</span><span style="font-size: 17px; color: #D9B3AE; background-image: linear-gradient(#D9A7A1,#D9A7A1); background-repeat: no-repeat; background-position: 0 55%; background-size: 100% 4px; animation-delay: 0.3s;" class="strike">species both native and nonnative,</span></div></div>
+</div></div></div>
+<h3>Grammar Guide: SAT <span class="arrow">↗</span></h3>
+<p>Built to help teenagers with neurodiverse profiles understand and apply grammatical concepts on standardized tests.</p>
+</a>
+</div>
+</div>
+
+<div class="row" id="photography">
+<div class="label"><span class="num">V</span><h2>Photography</h2><p>Some things are understood before they're ever said. Photography is how I notice them.</p></div>
+<div class="photo-card">
+<div class="photos">
+<a href="photography/"><img src="images/photo-plant.jpg" alt="A potted ficus whose twisted trunk looks like two figures embracing, with Venus flytraps in the foreground" loading="lazy"><span class="tag">Enter the gallery ↗</span></a>
+<a href="photography/#miami-skies"><img src="images/photo-miami-skies-02.jpg" alt="Sun rays fanning across a blue sky over the water in Miami, with birds in flight" loading="lazy"><span class="tag">Miami Skies ↗</span></a>
+<a href="photography/#elsewhere"><img src="images/photo-elsewhere-27.jpg" alt="Bare trees on a small island reflected in a still lake under a blue sky" loading="lazy"><span class="tag">Elsewhere ↗</span></a>
+</div>
+<div class="photo-text">
+<h3><a href="photography/">The gallery <span class="arrow">↗</span></a></h3>
+<p>Street Sights, Miami Skies, Elsewhere, Serendipity, Pareidolia, Passersby and Fellow Travelers.</p>
+<p class="meta">209 photographs · 7 series</p>
+</div>
+</div>
+</div>
+
+</section>
+
+<section class="contact" id="contact">
+<div class="links">
+<a class="ul" href="mailto:jpf2149@columbia.edu">jpf2149@columbia.edu</a>
+<a class="ul" href="https://www.linkedin.com/in/juanherzberg/" target="_blank" rel="noopener">LinkedIn ↗</a>
+<a class="ul" href="https://github.com/juanherzberg" target="_blank" rel="noopener">GitHub ↗</a>
+</div>
+</section>
+</main>
+</div>
+
+<script>
+// Scale each fixed-size cover to the width of its frame.
+(function(){
+  var frames = document.querySelectorAll('.cover-frame');
+  function fit(){ frames.forEach(function(f){ f.firstElementChild.style.transform = 'scale(' + (f.clientWidth / 1200) + ')'; }); }
+  fit();
+  window.addEventListener('resize', fit);
+  if (window.ResizeObserver) { var ro = new ResizeObserver(fit); frames.forEach(function(f){ ro.observe(f); }); }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+})();
+</script>
+</body>
+</html>
