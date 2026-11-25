@@ -302,7 +302,7 @@ lbImg.addEventListener("dragstart",e=>e.preventDefault());
 
 /* ---------- start ---------- */
 if(matchMedia("(pointer: coarse)").matches)$(".hint").textContent="Swipe to spin · tap a photo · pick a series below";
-{const h=location.hash.slice(1);const i=SERIES.findIndex(s=>s.slug===h);if(i>0)O.i=i}
+{const h=location.hash.slice(1);const i=SERIES.findIndex(s=>s.slug===h);O.i=i>=0?i:SERIES.findIndex(s=>s.slug==="miami-skies")}
 function placeCenter(){document.documentElement.style.setProperty("--cy",(innerWidth<760?55:58)+"%")}
 placeCenter();setHead(O.i,false);build();requestAnimationFrame(frame);
 setTimeout(()=>{if(O.i+1<N)load(O.i+1)},2500);
